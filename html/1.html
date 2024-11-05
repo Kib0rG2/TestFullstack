@@ -1,85 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Тестовое задание</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header class="header">
-    <img class="header__background" src="../images/header.png" alt="background">
-    <div class="header_top">
-
+    <img class="header__background header__background--image" src="../images/header.png" alt="background">
+     <div class="player">
+          <button class="player_button" onclick="openModal()">Смотреть видео</button>
+     </div>
+     <div id="videoModal" class="modal">
+    <div class="modal_content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <iframe id="video" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
     </div>
+</div>
+<script>
+    function openModal() {
+        document.getElementById("video").src = "https://www.youtube.com/embed/eVTXPUF4Oz4?autoplay=1"; // Замените ВАШ_ID_ВИДЕО на ID вашего видео
+        document.getElementById("videoModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("video").src = "";
+        document.getElementById("videoModal").style.display = "none";
+    }
+
+    // Закрытие модального окна при клике вне его
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("videoModal")) {
+            closeModal();
+        }
+    }
+</script>
 </header>
-<section id="katalog" class="katalog">
+<section id="katalog" class="katalog1">
+     <div class="katalog__list">
         <div class="katalog-wrapper">
-            <img src="../images/tovar/espanders.png" alt="" class="katalog-image /">
-            <p>Горох в стручках, 1 кг</p>
-            <p class="katalog-text_skidka">-29%</p>
-            <p class="katalog-text-status">Товар дня</p>
-            <p class="katalog-text_price">570 ₽</p>
-            <p class="katalog-text"><s>4 700 ₽</s></p>
-        </div>
-        <div class="katalog-wrapper">
-            <img src="../images/tovar/roll for press.png" alt="" class="katalog-image /">
-            <p>Голубика лесная, 200 г</p>
-            <p class="katalog-text_skidka">-31%</p>
-            <p class="katalog-text-status">Распродажа</p>
-            <p class="katalog-text_price">140 ₽</p>
-            <p class="katalog-text"><s>2 120 ₽</s></p>
-        </div>
-        <div class="katalog-wrapper">
-            <img src="../images/tovar/m1.png" alt="" class="katalog-image /">
-            <p>Морковь мытая, 1кг <br> для тела</p>
-            <p class="katalog-text-status">Хит</p>
-            <p class="katalog-text_price">140 ₽</p>
-            <p class="katalog-text"><s>4 465 ₽</s></p>
-        </div>
-        <div class="katalog-wrapper">
-            <img src="../images/tovar/valik.png" alt="" class="katalog-image /">
-            <p>Попкорн солёный,<br> для СВЧ-печи,120 г</p>
-            <p class="katalog-text_skidka">-29%</p>
-            <p class="katalog-text-status">Товар дня</p>
-            <p class="katalog-text_price">160 ₽</p>
-<section class="contact-me">
-    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Replace with your Access Key -->
-        <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+            <img src="../images/products/горох.png" alt="" class="katalog-image /">
+            <div class="labels">
+           <label class="label" for="Heart"></label>
+            <label class="label2" for="Eye"></label>
+            </div>
+            <div  class="nazvanie" >Горох в стручках, 1 кг</div>
+           <div class="info">
+            <div class="katalog-text_skidka">-29%</div>
+            <div class="katalog-text-status">Товар дня</div>
+           </div>
+            <div class="katalog-footer">
+              <div class="katalog-text_price">570 ₽</div>
+              <button id="openFormBtn" class="open-form">Оставить заявку</button>
 
-        <!-- Form Inputs. Each input must have a name="" attribute -->
-        <label class="label" for="name">
-            <input type="text" name="name" placeholder="Имя" required>
-        </label>
-        <label class="label" for="e-mail">
-            <input type="email" name="email" placeholder="E-mail" required>
-        </label>
-        <label class="label" for="message">
-            <textarea name="message" placeholder="Сообщение" required></textarea>
-        </label>
 
-        <!-- Обязательный чекбокс для согласия с политикой конфиденциальности -->
-        <label class="checkbox-label">
-            <input type="checkbox" name="terms" id="terms" required>
-            Я согласен с <a href="../html/privacy.html">Политикой конфиденциальности</a>
-        </label>
-
-        <!-- Кнопка отправки формы -->
-        <button type="submit">Отправить сообщение</button>
-    </form>
-</section>
-<script src="https://web3forms.com/client/script.js" async defer></script>
-        </div>
-        <div class="katalog-wrapper">
-            <img src="../images/tovar/m2.png" alt="" class="katalog-image /">
-            <p>Эскимо с малиной, <br> 150 г</p>
-            <p class="katalog-text">VINP</p>
-            <p class="katalog-status">Хит</p>
-            <p class="katalog-price">190 ₽</p>
-            <p class="katalog-text"><s>6 405 ₽</s></p>
-        </div>
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+            <h1>Оставьте заявку</h1>
+            <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required>
+                Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit"  class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
     </div>
+</div>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../js/script.js"></script> <!-- Подключение JS -->
+            </div>
+            </div>
+        <div class="katalog-wrapper2">
+            <img src="../images/products/новая голубика.png" alt="" class="katalog-image /">
+            <div class="labels">
+            <label class="label" for="Heart"></label>
+            <label class="label2" for="Eye"></label>
+            </div>
+            <div class="nazvanie">Голубика лесная, 200 г</div>
+            <div class="info2">
+            <div class="katalog-text_skidka">-31%</div>
+            <div class="katalog-text-status2">Распродажа</div>
+            </div>
+            <div class="katalog-footer">
+            <div class="katalog-text_price">140 ₽</div>
+             <button id="openFormBtn" class="open-form">Оставить заявку</button>
+            </div>
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+
+            <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required>
+                Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit"  class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
+    </div>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../js/script.js"></script> <!-- Подключение JS -->
+            </div>
+        </div>
+        <div class="katalog-wrapper3">
+            <img src="../images/products/morkovka.jpg" alt="" class="katalog-image /">
+            <div class="labels">
+            <label class="label" for="Heart"></label>
+            <label class="label2" for="Eye"></label>
+            </div>
+            <div  class="nazvanie" >Морковь мытая, 1кг </div>
+            <div class="info2">
+            <div class="katalog-text-status2">Хит</div>
+            </div>
+            <div class="katalog-footer">
+            <div class="katalog-text_price">140 ₽</div>
+              <button id="openFormBtn" class="open-form">Оставить заявку</button>
+            </div>
+
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+
+            <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required>
+                Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit"  class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
+    </div>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../js/script.js"></script> <!-- Подключение JS -->
+        </div>
+        </div>
+<div class="slider-container">
+        <div class="slider">
+        <div class="katalog-wrapper4">
+            <img src="../images/products/popcorn.png" alt="" class="katalog-image2 /">
+            <div class="labels">
+            <label class="label" for="Heart"></label>
+            <label class="label2" for="Eye"></label>
+            </div>
+            <div  class="nazvanie nazvanie1" >Попкорн солёный,<br> для СВЧ-печи,120 г</div>
+            <div class="info3">
+            <div class="katalog-text_skidka katalog-text_skidka2">-29%</div>
+            <div class="katalog-text-status3">Товар дня</div>
+            </div>
+            <div class="katalog-footer katalog-footer2">
+            <div class="katalog-text_price1">190 ₽</div>
+           <button id="openFormBtn" class="open-form ">Оставить заявку</button>
+            </div>
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+
+            <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required>
+                Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit"  class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
+    </div>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../js/script.js"></script> <!-- Подключение JS -->
+        </div>
+        </div>
+
+        <div class="katalog-wrapper5">
+            <img src="../images/products/эскимо.png" alt="" class="katalog-image2 /">
+            <div class="labels">
+            <label class="label" for="Heart"></label>
+            <label class="label2" for="Eye"></label>
+            </div>
+            <div  class="nazvanie nazvanie1" >Эскимо с малиной, <br> 150 г</div>
+            <div class="info3">
+            <div class="katalog-text-status3">Хит</div>
+            </div>
+            <div class="katalog-footer katalog-footer2">
+            <div class="katalog-text_price1">190 ₽</div>
+   <button id="openFormBtn" class="open-form">Оставить заявку</button>
+            </div>
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+
+           <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required>
+                Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit" class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="../js/script.js"></script> <!-- Подключение JS -->
+<script src="../js/slider.js"></script> <!-- Подключение внешнего JavaScript -->
+    </div>
+    </div>
+</div>
 </section>
 </body>
 </html>
