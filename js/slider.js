@@ -6,70 +6,69 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalSlides = slides.length;
     const slider = document.querySelector('.slider');
 
-    // Функция для смены слайда
+
     function changeSlide(index) {
         const offset = -index * (slides[0].clientWidth + 20); // 20 - отступ между слайдами
         slider.style.transform = `translateX(${offset}px)`;
 
-        // Убираем класс "active" у всех слайдов
+
         slides.forEach(slide => slide.classList.remove('active'));
 
-        // Добавляем класс "active" текущему слайду
+
         slides[index].classList.add('active');
     }
 
-    // Функция для активации или деактивации слайдера в зависимости от ширины экрана
+
     function toggleSlider() {
         if (window.innerWidth > 540) {
-            // Отключаем функционал свайпа
             slider.removeEventListener('touchstart', handleTouchStart);
             slider.removeEventListener('touchend', handleTouchEnd);
-            slider.removeEventListener('touchmove', handleTouchMove); // Убираем обработчик для touchmove
+            slider.removeEventListener('touchmove', handleTouchMove);
         } else {
-            // Включаем функционал свайпа
+
             slider.addEventListener('touchstart', handleTouchStart);
             slider.addEventListener('touchend', handleTouchEnd);
-            slider.addEventListener('touchmove', handleTouchMove); // Добавляем обработчик для touchmove
+            slider.addEventListener('touchmove', handleTouchMove);
         }
     }
 
-    // Обработчик начала свайпа
+
     function handleTouchStart(e) {
-        startX = e.touches[0].clientX; // Запоминаем начальную точку касания
+        startX = e.touches[0].clientX;
     }
 
-    // Обработчик завершения свайпа
-    function handleTouchEnd(e) {
-        endX = e.changedTouches[0].clientX; // Запоминаем конечную точку касания
 
-        // Если свайп был вправо
+    function handleTouchEnd(e) {
+        endX = e.changedTouches[0].clientX;
+
+
         if (startX > endX + 50) {
             if (currentIndex < totalSlides - 1) {
                 currentIndex++;
             }
         }
-        // Если свайп был влево
+
         else if (startX < endX - 50) {
             if (currentIndex > 0) {
                 currentIndex--;
             }
         }
 
-        // Обновляем слайд
+
         changeSlide(currentIndex);
     }
 
-    // Обработчик для блокировки прокрутки при свайпе
+
     function handleTouchMove(e) {
-        e.preventDefault(); // Блокирует прокрутку страницы
+        e.preventDefault();
     }
 
-    // Инициализация первого слайда
+
     changeSlide(currentIndex);
 
-    // Инициализация слайдера в зависимости от ширины экрана
+
     toggleSlider();
 
-    // Слушаем событие изменения размера экрана
+
     window.addEventListener('resize', toggleSlider);
 });

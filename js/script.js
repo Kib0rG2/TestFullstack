@@ -7,20 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelectorAll('[id^="openFormBtn"]').forEach(button => {
     button.addEventListener('click', () => {
         const formId = button.id.replace('openFormBtn', 'feedbackForm');
-        document.getElementById(formId).style.display = 'block'; // Открытие соответствующей формы
+        document.getElementById(formId).style.display = 'block';
     });
 });
-    // Открытие формы
+
     openFormBtn.onclick = function() {
         feedbackForm.style.display = 'block';
     }
 
-    // Закрытие формы
+
     closeBtn.onclick = function() {
         feedbackForm.style.display = 'none';
     }
 
-    // Закрытие формы при клике вне её области
+
     window.onclick = function(event) {
         if (event.target === feedbackForm) {
             feedbackForm.style.display = 'none';
