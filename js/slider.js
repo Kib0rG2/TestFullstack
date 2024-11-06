@@ -1,21 +1,36 @@
 document.addEventListener("DOMContentLoaded", function() {
     let startX = 0;
+    let endX = 0;
     let currentIndex = 0;
-    const slides = document.querySelectorAll('.slider .slide');
+    const slides = document.querySelectorAll('.slider .katalog-wrapper4, .slider .katalog-wrapper5');
     const totalSlides = slides.length;
-    const sliderTrack = document.querySelector('.slider-track');
+    const slider = document.querySelector('.slider');
 
     // Функция для смены слайда
     function changeSlide(index) {
-        currentIndex = (index + totalSlides) % totalSlides; // Индексы с циклическим переходом
-        const offset = -currentIndex * 100; // Каждый слайд занимает 100% ширины
-        sliderTrack.style.transform = `translateX(${offset}%)`;
+        const offset = -index * (slides[0].clientWidth + 20); // 20 - отступ между слайдами
+        slider.style.transform = `translateX(${offset}px)`;
 
         // Убираем класс "active" у всех слайдов
         slides.forEach(slide => slide.classList.remove('active'));
 
         // Добавляем класс "active" текущему слайду
-        slides[currentIndex].classList.add('active');
+        slides[index].classList.add('active');
+    }
+
+    // Функция для активации или деактивации слайдера в зависимости от ширины экрана
+    function toggleSlider() {
+        if (window.innerWidth > 540) {
+            // Отключаем функционал свайпа
+            slider.removeEventListener('touchstart', handleTouchStart);
+            slider.removeEventListener('touchend', handleTouchEnd);
+            slider.removeEventListener('touchmove', handleTouchMove); // Убираем обработчик для touchmove
+        } else {
+            // Включаем функционал свайпа
+            slider.addEventListener('touchstart', handleTouchStart);
+            slider.addEventListener('touchend', handleTouchEnd);
+            slider.addEventListener('touchmove', handleTouchMove); // Добавляем обработчик для touchmove
+        }
     }
 
     // Обработчик начала свайпа
@@ -25,25 +40,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Обработчик завершения свайпа
     function handleTouchEnd(e) {
-        const endX = e.changedTouches[0].clientX; // Запоминаем конечную точку касания
+        endX = e.changedTouches[0].clientX; // Запоминаем конечную точку касания
 
         // Если свайп был вправо
         if (startX > endX + 50) {
-            currentIndex++;
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+            }
         }
         // Если свайп был влево
         else if (startX < endX - 50) {
-            currentIndex--;
+            if (currentIndex > 0) {
+                currentIndex--;
+            }
         }
 
         // Обновляем слайд
         changeSlide(currentIndex);
     }
 
-    // Добавляем обработчики для свайпов
-    sliderTrack.addEventListener('touchstart', handleTouchStart);
-    sliderTrack.addEventListener('touchend', handleTouchEnd);
+    // Обработчик для блокировки прокрутки при свайпе
+    function handleTouchMove(e) {
+        e.preventDefault(); // Блокирует прокрутку страницы
+    }
 
     // Инициализация первого слайда
     changeSlide(currentIndex);
+
+    // Инициализация слайдера в зависимости от ширины экрана
+    toggleSlider();
+
+    // Слушаем событие изменения размера экрана
+    window.addEventListener('resize', toggleSlider);
 });

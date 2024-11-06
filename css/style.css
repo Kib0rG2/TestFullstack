@@ -183,7 +183,7 @@
     font-size: 16px ;
     display: flex;
     background-color: rgb(30 144 255);
-    width: 77px;
+    width: 90px;
     padding: 3px;
     color: white;
     justify-content: center;
@@ -283,10 +283,11 @@
      color: white;
      background-color:green;
      padding: 5px;
-     width: 35px;
+     width: 40px;
 }
 .katalog-text_skidka2{
-    font-size:16px;
+    padding: 5px;
+    font-size:14px;
     position: absolute;
     top: 40px;
 }
@@ -345,11 +346,11 @@
     width: 170px;
     position: absolute;
     flex-direction: column;
-    bottom: 5px;
+    bottom: 15px;
     margin-left: 10px;
 }
 .info3{
-    bottom: 90%;
+    bottom: 93%;
 }
 
 /*Tablet 768*/
@@ -436,12 +437,12 @@
 }
 
 .katalog-wrapper{
-    left: 10px;
+    left: 15px;
     height:240px;
     width: 300px;
 }
 .katalog-wrapper2{
-    left: 10px;
+    left: 15px;
     height: 140px;
     top: 500px;
     width: 300px;
@@ -449,7 +450,7 @@
 }
 .katalog-wrapper3{
     height: 140px;
-    left: 10px;
+    left: 15px;
     width: 300px;
     top: 650px;
 }
@@ -495,6 +496,10 @@
 .katalog-footer2{
     left: 30%;
 }
+.open-form2{
+    padding: 5px 5px;
+    font-size: 14px;
+}
 .info{
     top: 20px;
     flex-direction: row;
@@ -510,28 +515,29 @@
     bottom:85%;
 }
 .slider-container {
+    width: 100%;
 
 }
-.slider{
-    display: flex;
+
+/* Основной слайдер */
+.slider {
     position: relative;
+    display: flex;
     bottom: 240px;
     transition: transform 0.3s ease;
 }
-.slider-track {
-    display: flex;
-    transition: transform 0.3s ease;
+
+/* Обертка для всех слайдов */
+.katalog-wrapper4, .katalog-wrapper5 {
+    box-sizing: border-box;
+    margin-right: 20px;  /* Отступ между слайдами */
 }
-.slide{
+
+/* Классы для активации и деактивации слайдов */
+.katalog-wrapper4, .katalog-wrapper5 {
     transition: opacity 0.3s ease;
-    min-width: 100%;
 }
-.slide.active{
-    opacity: 1;
-}
-.slide:not(.active) {
-    opacity: 0.5; /* Полупрозрачные неактивные слайды */
-}
+
 .modal-content{
     width: 275px;
     height: 230px;

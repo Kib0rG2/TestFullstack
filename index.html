@@ -43,7 +43,7 @@
 <section id="katalog" class="katalog1">
      <div class="katalog__list">
         <div class="katalog-wrapper">
-            <img src="../images/products/горох.png" alt="" class="katalog-image /">
+            <img src="../images/products/peas.png" alt="" class="katalog-image /">
             <div class="labels">
            <label class="label" for="Heart"></label>
             <label class="label2" for="Eye"></label>
@@ -86,7 +86,7 @@
             </div>
             </div>
         <div class="katalog-wrapper2">
-            <img src="../images/products/новая голубика.png" alt="" class="katalog-image /">
+            <img src="../images/products/berry.png" alt="" class="katalog-image /">
             <div class="labels">
             <label class="label" for="Heart"></label>
             <label class="label2" for="Eye"></label>
@@ -137,7 +137,7 @@
             </div>
             <div class="katalog-footer">
             <div class="katalog-text_price">140 ₽</div>
-              <button id="openFormBtn" class="open-form">Оставить заявку</button>
+              <button id="openFormBtn" class="open-form ">Оставить заявку</button>
             </div>
 
 <div id="feedbackForm" class="modal">
@@ -167,44 +167,61 @@
         </div>
 <div class="slider-container">
     <div class="slider">
-        <div class="slider-track">
-            <div class="katalog-wrapper4 slide active">
-                <img src="../images/products/popcorn.png" alt="" class="katalog-image2">
-                <div class="labels">
-                    <label class="label" for="Heart"></label>
-                    <label class="label2" for="Eye"></label>
-                </div>
-                <div class="nazvanie nazvanie1">Попкорн солёный,<br> для СВЧ-печи,120 г</div>
-                <div class="info3">
-                    <div class="katalog-text_skidka katalog-text_skidka2">-29%</div>
-                    <div class="katalog-text-status3">Товар дня</div>
-                </div>
-                <div class="katalog-footer katalog-footer2">
-                    <div class="katalog-text_price1">190 ₽</div>
-                    <button id="openFormBtn" class="open-form">Оставить заявку</button>
-                </div>
+        <div class="katalog-wrapper4">
+            <img src="../images/products/popcorn.png" alt="" class="katalog-image2" />
+            <div class="labels">
+                <label class="label" for="Heart"></label>
+                <label class="label2" for="Eye"></label>
             </div>
-
-            <div class="katalog-wrapper5 slide">
-                <img src="../images/products/эскимо.png" alt="" class="katalog-image2">
-                <div class="labels">
-                    <label class="label" for="Heart"></label>
-                    <label class="label2" for="Eye"></label>
-                </div>
-                <div class="nazvanie nazvanie1">Эскимо с малиной,<br> 150 г</div>
-                <div class="info3">
-                    <div class="katalog-text-status3">Хит</div>
-                </div>
-                <div class="katalog-footer katalog-footer2">
-                    <div class="katalog-text_price1">190 ₽</div>
-                    <button id="openFormBtn" class="open-form">Оставить заявку</button>
-                </div>
+            <div class="nazvanie nazvanie1">Попкорн солёный,<br> для СВЧ-печи, 120 г</div>
+            <div class="info3">
+                <div class="katalog-text_skidka katalog-text_skidka2">-29%</div>
+                <div class="katalog-text-status3">Товар дня</div>
             </div>
+            <div class="katalog-footer katalog-footer2">
+                <div class="katalog-text_price1">190 ₽</div>
+                <button id="openFormBtn" class="open-form open-form2">Оставить заявку</button>
+            </div>
+        </div>
 
-            <!-- Добавьте дополнительные слайды по необходимости -->
+        <div class="katalog-wrapper5">
+            <img src="../images/products/icecream.png" alt="" class="katalog-image2" />
+            <div class="labels">
+                <label class="label" for="Heart"></label>
+                <label class="label2" for="Eye"></label>
+            </div>
+            <div class="nazvanie nazvanie1">Эскимо с малиной, <br> 150 г</div>
+            <div class="info3">
+                <div class="katalog-text-status3">Хит</div>
+            </div>
+            <div class="katalog-footer katalog-footer2">
+                <div class="katalog-text_price1">190 ₽</div>
+                <button id="openFormBtn" class="open-form open-form2 ">Оставить заявку</button>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Модальное окно для формы -->
+<div id="feedbackForm" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="aec1fec2-eb33-4622-a095-e2573335aa52">
+            <label class="label" for="name">
+                <input type="text" class="name" name="name" placeholder="Ваше имя*" required>
+            </label>
+            <label class="label" for="phone">
+                <input type="phone" class="phone" name="phone" placeholder="Номер телефона*" required>
+            </label>
+            <div class="h-captcha" data-captcha="true"></div>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required> Я соглашаюсь на обработку персональных данных
+            </label>
+            <button type="submit" class="send-button">Отправить</button>
+        </form>
+        <div id="result"></div>
+    </div>
 </div>
 </div>
 <script src="https://web3forms.com/client/script.js" async defer></script>
